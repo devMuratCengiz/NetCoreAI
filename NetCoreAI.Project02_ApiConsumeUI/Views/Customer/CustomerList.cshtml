@@ -1,0 +1,32 @@
+﻿@model List<ResultCustomerDto>
+@{
+    Layout = null;
+}
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<div class="container">
+    <br /><br />
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Müşteri Ad Soyad</th>
+            <th>Bakiye</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.id</td>
+                <td>@item.name @item.surname</td>
+                <td>@item.balance</td>
+                <td>
+                    <a asp-controller="Customer" asp-action="DeleteCustomer" asp-route-id="@item.id" class="btn btn-danger">Sil</a>
+                </td>
+                <td>
+                    <a asp-controller="Customer" asp-action="UpdateCustomer" asp-route-id="@item.id" class="btn btn-warning">Güncelle</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <a asp-action="CreateCustomer" asp-controller="Customer" class="btn btn-primary">Yeni Müşteri Girişi</a>
+</div>

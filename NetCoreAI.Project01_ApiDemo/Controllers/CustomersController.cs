@@ -49,7 +49,7 @@ namespace NetCoreAI.Project01_ApiDemo.Controllers
             return BadRequest("Customer not found");
         }
 
-        [HttpGet("GetById")]
+        [HttpGet("{id}")]
         public IActionResult GetCustomer(int id)
         {
             var customer = _context.Customers.Find(id);
